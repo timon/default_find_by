@@ -1,0 +1,29 @@
+DefaultFindBy
+=============
+
+(Yet another) solution to literal URLs and permalinks.
+
+After I found myself redefining <tt>to_param</tt> on my models and changing
+controllers load code, I had created this plugin.
+
+You give it a name of the field. It takes that name, defines <tt>to_param</tt>
+to return value of that field, and makes <tt>find</tt> use
+<tt>find_by_<i>that_field</i></tt> when it is given the string.
+
+
+
+Example
+=======
+
+    class Post < ActiveRecord::Base
+       # Post (id: integer, title: string, body: text)
+       default_find_by :title
+    end
+
+
+Testing
+=======
+To test this plugin, you'll need rspec, rspec-rails and nakajima-acts_as_fu
+gems installed.
+
+Copyright (c) 2008 Artem Ignatiev, released under the MIT license
